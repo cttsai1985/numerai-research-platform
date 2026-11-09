@@ -2,7 +2,7 @@
 
 This repository contains a historical Numerai Tournament modeling pipeline. The shell launchers were written for a particular workstation and Docker image. A fresh checkout does not include all of the dataset files and model configurations those launchers reference.
 
-> **Review the Docker scripts before running them.** The five launchers listed below issue `docker rm $(docker ps -a -q)`, which can remove stopped containers from other projects.
+The Docker launchers below expect the configured image and a local `env.local` file. Review their mounts and ports for your workstation.
 
 - [`02_cron_run_infer.sh`](02_cron_run_infer.sh)
 - [`02_run_docker_bash.sh`](02_run_docker_bash.sh)

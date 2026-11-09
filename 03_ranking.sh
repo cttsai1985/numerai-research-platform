@@ -21,8 +21,6 @@ GPU_DEVICE='"device=0"'
 
 WORKDIR="/root/src/script"
 
-docker rm $(docker ps -a -q)
-
 CMD="python offline_model_overview.py"
 
 echo docker run -i -t --cpus=${CPU_COUNTS} --gpus ${GPU_DEVICE} -p $RootPort1:$DockerRootPort1 -p $RootPort2:$DockerRootPort2 -e PYTHONPATH=/root/src -v ${RootSrcPath}:${DockerRootSrcPath} -v $(readlink -f ${DataPath}):${DockerDataPath} --shm-size $SHM_SIZE --workdir=${WORKDIR} --env-file env.local $DOCKER_IMAGE $CMD

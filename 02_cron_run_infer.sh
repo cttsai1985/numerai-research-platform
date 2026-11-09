@@ -21,8 +21,6 @@ GPU_DEVICE='"device=0"'
 
 WORKDIR=${DockerRootSrcPath}/script
 
-docker rm $(docker ps -a -q)
-
 CMD="bash ./weekly_infer.sh"
 
 echo docker run --cpus=${CPU_COUNTS} --gpus ${GPU_DEVICE} -p $RootPort1:$DockerRootPort1 -p $RootPort2:$DockerRootPort2 -e PYTHONPATH=/root/src -v ${RootSrcPath}:${DockerRootSrcPath} -v $(readlink -f ${DataPath}):${DockerDataPath} --shm-size $SHM_SIZE --workdir=${WORKDIR} --env-file ${RootSrcPath}/env.local $DOCKER_IMAGE $CMD
