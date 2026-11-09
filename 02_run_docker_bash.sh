@@ -28,8 +28,6 @@ GPU_DEVICE='"device=0"'
 
 WORKDIR="/root/src/script"
 
-docker rm $(docker ps -a -q)
-
 CMD="jupyter notebook --port ${DockerRootPort1} --ip=0.0.0.0 --allow-root --no-browser"
 CMD="bash"
 

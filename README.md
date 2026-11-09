@@ -1,15 +1,23 @@
-## README
+# Numerai Machine Learning Tournament
 
-This is a monolith with full modeling lifecycle participating numerai tournament. It contains E2E pipelines for:
-- training scikit-learn compatible gradient boosting models (such as XGBoost, LightGBM and CatBoost) and ensemble.
-- validate models using industry standard metrics such as Sharpe, Corr, Stdev, MDD.
-- using optuna for hyperparameters tuning
-- custermize objective, metrics and postprocessing such as neutralization
-- weekly inference to meet the tournament requeiremt
+This repository contains a historical Numerai Tournament modeling pipeline. The shell launchers were written for a particular workstation and Docker image. A fresh checkout does not include all of the dataset files and model configurations those launchers reference.
 
-### Model Performance
-This codebase was used for several models:
-ct_balance was on the weekly top 5%/15% (20+ times) performance within 1 yr time frame: https://numer.ai/ct_balance
+The Docker launchers below expect the configured image and a local `env.local` file. Review their mounts and ports for your workstation.
 
-### Info for NumerAI tournament
-https://docs.numer.ai/tournament/learn
+- [`02_cron_run_infer.sh`](02_cron_run_infer.sh)
+- [`02_run_docker_bash.sh`](02_run_docker_bash.sh)
+- [`02_run_infer.sh`](02_run_infer.sh)
+- [`03_ranking.sh`](03_ranking.sh)
+- [`04_housekeep.sh`](04_housekeep.sh)
+
+## What’s included
+
+- `ds_utils/` contains training, tuning, validation, ensembling, and neutralization code for scikit-learn compatible models such as LightGBM, XGBoost, and CatBoost.
+- `numerai_utils/` contains Numerai API helpers.
+- `script/` contains data, research, and inference entry points, including the historical weekly inference workflow.
+
+The original project recorded historical leaderboard results for [`ct_balance`](https://numer.ai/ct_balance). See the [Numerai documentation](https://docs.numer.ai/) for current Tournament instructions.
+
+## License
+
+The repository is licensed under [Apache License 2.0](LICENSE).
